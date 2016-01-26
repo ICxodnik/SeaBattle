@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="SeaBattle.BattleFieldControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SeaBattle"
+             xmlns:core="clr-namespace:SeaBattleCore;assembly=SeaBattleCore"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=core:BattleField, IsDesignTimeCreatable=True}"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </UserControl.Resources>
+    <ItemsControl ItemsSource="{Binding Cells}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <ItemsControl.ItemTemplate>
+            <DataTemplate DataType="core:CellState">
+                <Button x:Name="InnerButton" BorderThickness="0" Margin="2" Click="Button_Click">
+                    <Image x:Name="InnerImage" Stretch="Uniform" Visibility="{Binding IsKnown, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                </Button>
+                <DataTemplate.Triggers>
+                    <DataTrigger Binding="{Binding HasShipPart}" Value="False">
+                        <Setter TargetName="InnerImage" Property="Source"  Value="Assets/Images/Bomba.png" />
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding HasShipPart}" Value="True">
+                        <Setter TargetName="InnerImage" Property="Source" Value="Assets/Images/Bomba.png" />
+                    </DataTrigger>
+                </DataTemplate.Triggers>
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+                <UniformGrid Columns="10" Rows="10">
+                </UniformGrid>
+            </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+    </ItemsControl>
+</UserControl>
