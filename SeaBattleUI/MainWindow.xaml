@@ -12,8 +12,8 @@
 
     <Grid>
 
-        <local:BattleFieldControl Margin="40,74,471.6,123.6" BattleField="{Binding}" />
-        <local:BattleFieldControl Margin="456,74,55.6,123.6" BattleField="{Binding}" />
+        <local:BattleFieldControl Margin="40,74,471.6,123.6" />
+        <local:BattleFieldControl Margin="456,74,55.6,123.6" />
 
     </Grid>
 

@@ -22,7 +22,9 @@ namespace SeaBattle
     public partial class BattleFieldControl : UserControl
     {
         public static readonly DependencyProperty BattleFieldProperty = DependencyProperty.Register(
-            nameof(BattleField), typeof(BattleField), typeof(BattleFieldControl));
+            nameof(BattleField),
+            typeof(BattleField),
+            typeof(BattleFieldControl));
 
         public BattleField BattleField
         {
@@ -34,6 +36,7 @@ namespace SeaBattle
         public BattleFieldControl()
         {
             InitializeComponent();
+            DataContext = new SeaBattleCore.BattleField();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
